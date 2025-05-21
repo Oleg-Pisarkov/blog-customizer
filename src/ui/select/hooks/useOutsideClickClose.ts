@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 type UseOutsideClickClose = {
 	isOpen: boolean;
-	onChange: (newValue: boolean) => void;
+	onChange?: (newValue: boolean) => void;
 	onClose?: () => void;
 	rootRef: React.RefObject<HTMLDivElement>;
 };
@@ -21,6 +21,7 @@ export const useOutsideClickClose = ({
 				onChange?.(false);
 			}
 		};
+		if (!isOpen) return;
 
 		window.addEventListener('mousedown', handleClick);
 
